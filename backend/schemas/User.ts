@@ -5,7 +5,7 @@ export const User = list({
   // access:
   // ui
   fields: {
-    name: text({ isIndexed: true }),
+    name: text({ isRequired: true }),
     email: text({ isRequired: true, isUnique: true }),
     password: password(),
     cart: relationship({
@@ -16,6 +16,6 @@ export const User = list({
         itemView: { fieldMode: 'read' },
       },
     }),
-    // TODO, add roles, cart and orders
+    orders: relationship({ ref: 'Order.user', many: true }),
   },
 });
